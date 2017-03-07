@@ -1,7 +1,7 @@
-Astrology-API-PHP-Client
+Vedic-Rishi-Astro-API-PHP-Client
 ================================
 
-This is PHP client to consume Astrology APIs
+This is PHP client to consume Vedic Rishi Astro APIs
 
 Where to get API Key
 ====================

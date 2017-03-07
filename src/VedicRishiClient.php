@@ -32,7 +32,6 @@ class VedicRishiClient
     {
         $serviceUrl = $this->apiEndPoint.'/'.$resource.'/';
         $authData = $this->userId.":".$this->apiKey;
-
         $ch = curl_init();
         curl_setopt($ch,CURLOPT_URL, $serviceUrl);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -119,6 +118,13 @@ class VedicRishiClient
         return array_merge($mData, $fData);
     }
 
+    private function packageSunSignPredictionData($predictionTimezone)
+    {
+        return array (
+            'timezone' => $predictionTimezone
+        );
+    }
+
     private function dataSanityCheck($data)
     {
 
@@ -184,6 +190,33 @@ class VedicRishiClient
         $data = $this->packageTransitPredictionData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone);
         $resData = $this->getCurlReponse($resourceName, $data);
         return $resData;
+    }
+
+    private function callSunSignDailyPrediction($resourceName, $predictionTimezone)
+    {
+        $data = $this->packageSunSignPredictionData($predictionTimezone);
+        $response = $this->getCurlReponse($resourceName, $data);
+        return $response;
+    }
+
+   public function getTodaysPrediction($zodiacSign, $timezone)
+    {
+        $resourceName = 'sun_sign_prediction/daily/'.$zodiacSign;
+        return $this->callSunSignDailyPrediction($resourceName, $timeZone);
+
+    }
+
+    public function getTomorrowsPrediction($zodiacSign, $timezone)
+    {
+        $resourceName = 'sun_sign_prediction/daily/next/'.$zodiacSign;
+        return $this->callSunSignDailyPrediction($resourceName, $timeZone);
+
+    }
+
+    public function getYesterdaysPrediction($zodiacSign, $timezone)
+    {
+        $resourceName = 'sun_sign_prediction/daily/previous/'.$zodiacSign;
+        return $this->callSunSignDailyPrediction($resourceName, $timeZone);
     }
 
 }
