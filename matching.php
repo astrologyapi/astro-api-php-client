@@ -9,8 +9,8 @@
 require_once 'src/VedicRishiClient.php';
 
 
-$userId = "<YourUserIdhere>";
-$apiKey = "<YourApiKeyHere>";
+$userId = "600453";
+$apiKey = "97dd275ab5f87561694efe4cb885447a";
 
 // create a male profile data
 $data = array(
@@ -37,12 +37,15 @@ $femaleData = array(
     'timezone' => 5.5
 );
 
-// match making api to be called
-$matchMakingReourceName = "match_ashtakoot_points";
 
 
-// call matchMakingCall method of vedicrishiclient for matching apis
-$ashtakootaPoints = $vedicRishi->matchMakingCall($matchMakingReourceName, $data, $femaleData);
+// instantiate VedicRishiClient class
+$vedicRishi = new VedicRishiClient($userId, $apiKey);
 
-// print ashtakoota response data recieved from api.. data is in the JSON format
-echo $ashtakootaPoints;
+
+// call method of vedicrishiclient for matching apis
+$res = $vedicRishi->matchObstructions($data, $femaleData);
+
+// print response data recieved from api.. data is in the JSON format
+echo $res;
+echo "\n";
