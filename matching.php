@@ -9,8 +9,8 @@
 require_once 'src/VedicRishiClient.php';
 
 
-$userId = "600453";
-$apiKey = "97dd275ab5f87561694efe4cb885447a";
+$userId = "<your-user-id>";
+$apiKey = "<your-api-key>";
 
 // create a male profile data
 $data = array(

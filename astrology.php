@@ -9,8 +9,8 @@
 require_once 'src/VedicRishiClient.php';
 
 
-$userId = "4545";
-$apiKey = "33e5731ac9bf30a51180ac18a7269ffb";
+$userId = "<your-user-id>";
+$apiKey = "<your-api-key>";
 
 
 // make some dummy data in order to call vedic rishi api
