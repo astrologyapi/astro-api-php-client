@@ -20,7 +20,7 @@ How to Use
     Replace ``` $userId ``` and ``` $apiKey``` with your id and keys respectively.
     You can get the API key details from https://www.vedicrishiastro.com/astro-api/
 
-3. You can call the functions for the respective APIs by passing the birth data as argument. Eg. for calling the  ``` /planets/ ``` api, use the following function as shown below
+3. You can call the functions for the respective APIs by passing the birth data and other relevant data (if required) as argument. Eg. for calling the  ``` /planets/ ``` api, use the following function as shown below
     ```php
     $response = $clientInstance->getPlanetDetails($date, $month, $year, $hour, $min, $lat, $lon, $tzone);
 
@@ -86,5 +86,5 @@ How to Use
                         'timezone' => 5.5
                     );
     ```
-Run matching.php file to run functions related to Vedic Rishi Match Making APIs.
+Run matching.php file to test functions related to Vedic Rishi Match Making APIs.
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
