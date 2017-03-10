@@ -12,7 +12,7 @@ mobile applications.
 How to Use
 ==========
 
-1. Copy VedicRishiClient.php class file to your local or server file system
+1. Copy src/VedicRishiClient.php and src/sdk.php files to your local or server file system
 2. Instantiate ```VedicRishiClient``` class as follows as follows -
     ```php
     $clientInstance = new VedicRishiClient($userId, $apiKey);
@@ -20,12 +20,13 @@ How to Use
     Replace ``` $userId ``` and ``` $apiKey``` with your id and keys respectively.
     You can get the API key details from https://www.vedicrishiastro.com/astro-api/
 
-3. Call the api
+3. Calling the api
+    You can call the functions for the respective APIs by passing the birth data as argument. Eg. for calling the  ``` /planets/ ``` api, use the following function as shown below
     ```php
-    $response = $clientInstance->call($apiName, $date, $month, $year, $hour, $min, $lat, $lon, $tzone);
+    $response = $clientInstance->getPlanetDetails($date, $month, $year, $hour, $min, $lat, $lon, $tzone);
 
     ```
-    View test.php for more details about calling APIs.
+    View astrology.php for more details about calling APIs related to astrology.
     
 4. The ``` $response ``` will be a JSON encoded data returned as an API response. Eg. for ``` /planets/ ``` api - 
     ```js
@@ -45,19 +46,19 @@ How to Use
         ...
     ]
     ```
-5. For calling numerological api, call method name ``` numeroCall() ``` as follows -
+5. For calling numerological api, call the respective function. Eg. to get numerology report call ``` getNumeroReport() ``` as follows -
 
     ```php
-        $response = $clientInstance->numeroCall($apiName, $date, $month, $year, $name);
+        $response = $clientInstance->getNumeroReport($date, $month, $year, $name);
 
     ```
     Only date, month and year along with name is required for numerological calculations.
-    Run the numerolgy.php file to test numerological APIs.
+    Run the numerolgy.php file to test functions related to numerological APIs.
 
-6. For match making horoscope calculations and report analysis, please use ```matchMakingCall()``` method as follows -
+6. For match making horoscope calculations and report analysis, use matchmaking related functions. Eg. to get matchmaking report, use ```getMatchMakingReport()``` function as follows -
 
     ```php
-            $response = $clientInstance->matchMakingCall($resourceName, array $maleBirthData, array $femaleBirthData);
+            $response = $clientInstance->getMatchMakingReport(array $maleBirthData, array $femaleBirthData);
 
 
     //where  $maleBirthData and $femaleBirthData is mapped as follows -
@@ -86,5 +87,5 @@ How to Use
                         'timezone' => 5.5
                     );
     ```
-Run matching.php file to run Vedic Rishi Match Making APIs.
+Run matching.php file to run functions related to Vedic Rishi Match Making APIs.
 For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
