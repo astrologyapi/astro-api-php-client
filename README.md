@@ -13,15 +13,14 @@ How to Use
 ==========
 
 1. Copy src/VedicRishiClient.php and src/sdk.php files to your local or server file system
-2. Instantiate ```VedicRishiClient``` class as follows as follows -
+2. Instantiate ```VedicRishiClient``` class as follows -
     ```php
     $clientInstance = new VedicRishiClient($userId, $apiKey);
     ```
     Replace ``` $userId ``` and ``` $apiKey``` with your id and keys respectively.
     You can get the API key details from https://www.vedicrishiastro.com/astro-api/
 
-3. Calling the api
-    You can call the functions for the respective APIs by passing the birth data as argument. Eg. for calling the  ``` /planets/ ``` api, use the following function as shown below
+3. You can call the functions for the respective APIs by passing the birth data as argument. Eg. for calling the  ``` /planets/ ``` api, use the following function as shown below
     ```php
     $response = $clientInstance->getPlanetDetails($date, $month, $year, $hour, $min, $lat, $lon, $tzone);
 
