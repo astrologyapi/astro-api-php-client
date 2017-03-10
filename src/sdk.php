@@ -7,17 +7,14 @@
  */
 
 
-function getCurlReponse($userId, $apiKey, $resource, array $data)
+function getCurlReponse($userId, $apiKey, $resource, array $data, $language)
 {
     $apiEndPoint = "http://api.vedicrishiastro.com/v1";
 
 
     $serviceUrl = $apiEndPoint.'/'.$resource.'/';
     $authData = $userId.":".$apiKey;
-    //echo $serviceUrl;
-    //echo "\n";
-    //echo $authData;
-    //echo  "\n";
+
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_URL, $serviceUrl);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -26,6 +23,10 @@ function getCurlReponse($userId, $apiKey, $resource, array $data)
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 
     $header[] = 'Authorization: Basic '. base64_encode($authData);
+    /* Setting the Language of Response */
+    if( $language != NULL ) {
+        array_push( $header , 'Accept-Language: ' .$language );
+    }
 
     curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     curl_setopt($ch, CURLOPT_POST, 1);

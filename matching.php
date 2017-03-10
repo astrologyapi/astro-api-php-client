@@ -46,6 +46,27 @@ $vedicRishi = new VedicRishiClient($userId, $apiKey);
 // call method of vedicrishiclient for matching apis
 $res = $vedicRishi->matchObstructions($data, $femaleData);
 
+$res1 = $vedicRishi->matchAshtakootPoints($data, $femaleData);
+
+$res2 = $vedicRishi->matchBirthDetails($data, $femaleData);
+
+$res3 = $vedicRishi->matchPlanetDetails($data, $femaleData);
+
+$res4 = $vedicRishi->matchAstroDetails($data, $femaleData);
+
+$res5 = $vedicRishi->getMatchMakingReport($data, $femaleData);
+
+$res6 = $vedicRishi->getMatchSimpleReport($data, $femaleData);
+
+$res7 = $vedicRishi->getMatchManglikReport($data, $femaleData);
+
+
+
+
+
+
+
+
 // print response data recieved from api.. data is in the JSON format
-echo $res;
+echo $res7;
 echo "\n";

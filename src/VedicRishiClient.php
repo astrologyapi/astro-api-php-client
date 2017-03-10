@@ -14,6 +14,7 @@ class VedicRishiClient
 {
     private $userId = null;
     private $apiKey = null;
+    private $language = null;
 
     //TODO: MUST enable this on production- MUST
     //private $apiEndPoint = "https://api.vedicrishiastro.com/v1";
@@ -31,6 +32,15 @@ class VedicRishiClient
     }
 
 
+    /*
+    A Function to set the Language of Response.
+    Just call this function and you can change the language.
+    This function should be passed either 'en' for English or 'hi' for Hindi.
+*/
+    public function setLanguage( $language )
+    {
+        $this->language = $language;
+    }
 
     private function packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
@@ -105,6 +115,14 @@ class VedicRishiClient
         );
     }
 
+    private function packageGeoData($place, $numRow)
+    {
+        return array(
+            'place' => $place,
+            'maxRows' => $numRow
+        );
+    }
+
     private function dataSanityCheck($data)
     {
 
@@ -149,7 +167,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_birth_details';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -160,7 +178,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_planet_details';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -171,7 +189,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_astro_details';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -182,7 +200,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_ashtakoot_points';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -193,7 +211,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_making_report';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -204,7 +222,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_manglik_report';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -215,7 +233,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_obstructions';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -226,7 +244,7 @@ class VedicRishiClient
         //$this->dataSanityCheck($femaleBirthData);
         $resourceName = 'match_simple_report';
         $data = $this->packageMatchMakingData($maleBirthData, $femaleBirthData);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -239,7 +257,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_table';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -247,7 +265,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_report';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -255,7 +273,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_fav_time';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -263,7 +281,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_place_vastu';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -271,7 +289,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_fasts_report';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -279,7 +297,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_fav_lord';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -287,7 +305,7 @@ class VedicRishiClient
     {
         $resourceName = 'numero_fav_mantra';
         $data = $this->packageNumeroData($date, $month, $year, $name);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -306,14 +324,14 @@ class VedicRishiClient
     public function callTransitPrediction($resourceName, $date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone)
     {
         $data = $this->packageTransitPredictionData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $resData;
     }
 
     private function callSunSignDailyPrediction($resourceName, $predictionTimezone)
     {
         $data = $this->packageSunSignPredictionData($predictionTimezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -341,7 +359,7 @@ class VedicRishiClient
     {
         $resourceName = 'daily_nakshatra_prediction';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -354,7 +372,7 @@ class VedicRishiClient
     {
         $resourceName = 'birth_details';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -362,7 +380,7 @@ class VedicRishiClient
     {
         $resourceName = 'astro_details';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -370,7 +388,7 @@ class VedicRishiClient
     {
         $resourceName = 'planets';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -378,7 +396,7 @@ class VedicRishiClient
     {
         $resourceName = 'planets/extended';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -386,23 +404,23 @@ class VedicRishiClient
     {
         $resourceName = 'planets/tropical';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
-    public function getGeoDetails($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
+    public function getGeoDetails($place, $rows)
     {
         $resourceName = 'geo_details';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageGeoData($place, $rows);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
-    public function getTimezone($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
+    public function getTimezone($countryId, $isDst)
     {
         $resourceName = 'timezone';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = array('country_code' => $countryId, 'isDst' => $isDst);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -413,7 +431,7 @@ class VedicRishiClient
     {
         $resourceName = 'planet_ashtak/'.$planet;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -421,7 +439,7 @@ class VedicRishiClient
     {
         $resourceName = 'sarvashtak';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -432,7 +450,7 @@ class VedicRishiClient
     {
         $resourceName = 'basic_panchang';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -440,23 +458,23 @@ class VedicRishiClient
     {
         $resourceName = 'planet_panchang';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
     public function getBasicPanchangSunrise($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
         $resourceName = 'basic_panchang/sunrise';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageHoroData($date, $month, $year, 0, 0, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
     public function getPlanetPanchangSunrise($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
         $resourceName = 'planet_panchang/sunrise';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageHoroData($date, $month, $year, 0, 0, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -464,31 +482,31 @@ class VedicRishiClient
     {
         $resourceName = 'advanced_panchang';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
     public function getAdvancedPanchangSunrise($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
         $resourceName = 'advanced_panchang/sunrise';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageHoroData($date, $month, $year, 0, 0, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
     public function getChaughadiyaMuhurta($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
         $resourceName = 'chaughadiya_muhurta';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageHoroData($date, $month, $year, 0, 0, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
     public function getHoraMuhurta($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone)
     {
         $resourceName = 'hora_muhurta';
-        $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $data = $this->packageHoroData($date, $month, $year, 0, 0, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -499,7 +517,7 @@ class VedicRishiClient
     {
         $resourceName = 'current_vdasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -507,7 +525,7 @@ class VedicRishiClient
     {
         $resourceName = 'current_vdasha_all';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -515,7 +533,7 @@ class VedicRishiClient
     {
         $resourceName = 'major_vdasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -526,7 +544,7 @@ class VedicRishiClient
     {
         $resourceName = 'major_yogini_dasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -534,7 +552,7 @@ class VedicRishiClient
     {
         $resourceName = 'sub_yogini_dasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -542,7 +560,7 @@ class VedicRishiClient
     {
         $resourceName = 'current_yogini_dasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -553,7 +571,7 @@ class VedicRishiClient
     {
         $resourceName = 'major_chardasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -561,7 +579,7 @@ class VedicRishiClient
     {
         $resourceName = 'current_chardasha';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -569,7 +587,7 @@ class VedicRishiClient
     {
         $resourceName = 'sub_chardasha/'.$rashiName;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -577,7 +595,7 @@ class VedicRishiClient
     {
         $resourceName = 'sub_chardasha/'.$rashiName.'/'.$subRashiName;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -588,7 +606,7 @@ class VedicRishiClient
     {
         $resourceName = 'kalsarpa_details';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -607,7 +625,7 @@ class VedicRishiClient
     {
         $resourceName = 'pitra_dosha_report';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -618,7 +636,7 @@ class VedicRishiClient
     {
         $resourceName = 'sadhesati_life_details';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -626,7 +644,7 @@ class VedicRishiClient
     {
         $resourceName = 'sadhesati_current_status';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -634,7 +652,7 @@ class VedicRishiClient
     {
         $resourceName = 'sadhesati_remedies';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -645,7 +663,7 @@ class VedicRishiClient
     {
         $resourceName = 'manglik';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -665,7 +683,7 @@ class VedicRishiClient
     {
         $resourceName = 'horo_chart/'.$chartId;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -673,7 +691,7 @@ class VedicRishiClient
     {
         $resourceName = 'horo_chart_extended/'.$chartId;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -684,7 +702,7 @@ class VedicRishiClient
     {
         $resourceName = 'basic_gem_suggestion';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -692,7 +710,7 @@ class VedicRishiClient
     {
         $resourceName = 'puja_suggestion';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -700,7 +718,7 @@ class VedicRishiClient
     {
         $resourceName = 'rudraksha_suggestion';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -714,7 +732,7 @@ class VedicRishiClient
     {
         $resourceName = 'general_house_report/'.$planetName;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -722,7 +740,7 @@ class VedicRishiClient
     {
         $resourceName = 'general_rashi_report/'.$planetName;
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -730,7 +748,7 @@ class VedicRishiClient
     {
         $resourceName = 'general_nakshatra_report';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 
@@ -738,7 +756,7 @@ class VedicRishiClient
     {
         $resourceName = 'general_ascendant_report';
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
         return $response;
     }
 

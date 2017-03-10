@@ -1,11 +1,10 @@
-
 <?php
 
 require_once 'src/VedicRishiClient.php';
 
 
-$userId = '<enter-your-user-id>';
-$apiKey = "<enter-your-api-key>";
+$userId = "<your-user-id>";
+$apiKey = "<your-api-key>";
 
 $data = array(
     'timezone' => 5.5
