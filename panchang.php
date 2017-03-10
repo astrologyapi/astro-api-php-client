@@ -25,7 +25,7 @@ $data = array(
     'latitude' => 25.123,
     'longitude' => 82.34,
     'timezone' => 5.5,
-    'prediction_timezone' => 5.5 // Optional. Only For Transit Prediction API
+    
 );
 
 
