@@ -6,7 +6,7 @@ This is PHP client to consume Vedic Rishi Astro APIs
 Where to get API Key
 ====================
 
-You can visit https://www.vedicrishiastro.com/astro-api/ to get the astrology API key to be used for your websites or
+You can visit https://www.astrologyapi.com/ to get the astrology API key to be used for your websites or
 mobile applications.
 
 How to Use
@@ -87,4 +87,4 @@ How to Use
                     );
     ```
 Run matching.php file to test functions related to Vedic Rishi Match Making APIs.
-For API documentation, visit - https://www.vedicrishiastro.com/astro-api/docs/
+For API documentation, visit - https://www.astrologyapi.com/docs/
