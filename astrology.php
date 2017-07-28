@@ -56,7 +56,7 @@ $responseData4 = $vedicRishi->getPlanetsTropicalDetails($data['date'], $data['mo
 
 $responseData5 = $vedicRishi->getGeoDetails('pune', 5);
 
-$responseData6 = $vedicRishi->getTimezone('IN', false);
+$responseData6 = $vedicRishi->getTimezone('Asia/Kolkata', 'false');
 
 
 //*****************Ashtakvarga****************//
