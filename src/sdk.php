@@ -9,7 +9,7 @@
 
 function getCurlReponse($userId, $apiKey, $resource, array $data, $language)
 {
-    $apiEndPoint = "http://api.vedicrishiastro.com/v1";
+    $apiEndPoint = "http://json.astrologyapi.com/v1";
 
 
     $serviceUrl = $apiEndPoint.'/'.$resource.'/';
