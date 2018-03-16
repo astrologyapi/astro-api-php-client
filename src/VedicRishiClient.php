@@ -760,4 +760,20 @@ class VedicRishiClient
         return $response;
     }
 
+    /*Timezone with DST*/
+    public function timezoneWithDst( $date, $latitude, $longitude)
+    {
+        $data = array(
+            "date" => $date,
+            "latitude" => $latitude,
+            "longitude" => $longitude
+        );
+
+        $resourceName = 'timezone_with_dst';
+
+
+        $resData = getCurlReponse($this->userId, $this->apiKey,$resourceName, $data,$this->language);
+        return $resData;
+    }
+
 }

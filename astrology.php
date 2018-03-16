@@ -12,6 +12,7 @@ $userId = "<your-user-id>";
 $apiKey = "<your-api-key>";
 
 
+
 // make some dummy data in order to call vedic rishi api
 $data = array(
 
@@ -136,8 +137,14 @@ $responseData30 = $vedicRishi->getNakshatraReport($data['date'], $data['month'],
 //****************************Nakshatra Prediction**********************//
 $responseData31 = $vedicRishi->getDailyNakshatraPrediction($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
+
+//****************************Timezone Wth DST**********************//
+//date formate -> mm-dd-yyyy
+$date = $data['month'].'-'.$data['date'].'-'.$data['year'];
+$timezoneData = $vedicRishi->timezoneWithDst($date, $data['latitude'], $data['longitude']);
 // print response data
-echo $responseData;
+echo $timezoneData;
+
 echo "\n";
 
 
