@@ -776,4 +776,49 @@ class VedicRishiClient
         return $resData;
     }
 
+
+
+    //***************************************** WESTERN HOROSCOPE FUNCTIONS ****************************************************
+
+    private function packageWesternData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone, $settings = array()){
+
+        $dataMain = array(
+            'day' => $date,
+            'month' => $month,
+            'year' => $year,
+            'hour' => $hour,
+            'min' => $minute,
+            'lat' => $latitude,
+            'lon' => $longitude,
+            'tzone' => $timezone,
+
+        );
+
+        if(count($settings) > 0 && $settings != null){
+            return array_merge($dataMain, $settings);
+        }
+        return $dataMain;
+
+    }
+
+
+
+    public function getWesternHoroscope($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone, $settings = array()){
+
+        $resourceName = 'western_horoscope';
+        $data = $this->packageWesternData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone, $settings);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, 'en');
+        return $response;
+
+    }
+
+    public function getWheelChartTropical($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone){
+
+        $resourceName = 'wheel_chart/tropical';
+        $data = $this->packageWesternData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
+        $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, 'en');
+        return $response;
+
+    }
+
 }
