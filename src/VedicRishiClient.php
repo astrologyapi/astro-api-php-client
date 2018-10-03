@@ -823,7 +823,7 @@ class VedicRishiClient
     
     public function call($resourceName, $date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone){
         $data = $this->packageHoroData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone);
-        $resData = $this->getCurlReponse($this->userId, $this->apiKey,$resourceName, $data, $this->language);
+        $resData = getCurlReponse($this->userId, $this->apiKey,$resourceName, $data, $this->language);
         return $resData;
     }
 
