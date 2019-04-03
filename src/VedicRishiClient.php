@@ -325,7 +325,7 @@ class VedicRishiClient
     {
         $data = $this->packageTransitPredictionData($date, $month, $year, $hour, $minute, $latitude, $longitude, $timezone,$predictionTimezone);
         $response = getCurlReponse($this->userId, $this->apiKey, $resourceName, $data, $this->language);
-        return $resData;
+        return $response;
     }
 
     private function callSunSignDailyPrediction($resourceName, $predictionTimezone)
