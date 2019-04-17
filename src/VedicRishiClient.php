@@ -827,4 +827,9 @@ class VedicRishiClient
         return $resData;
     }
 
+    public function callApi($endPoint, $data){
+        $response = getCurlReponse($this->userId, $this->apiKey, $endPoint, $data, $this->language);
+        return $response;
+    }
+
 }
