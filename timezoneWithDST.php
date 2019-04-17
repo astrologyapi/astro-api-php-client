@@ -19,7 +19,7 @@ $data = array(
 
     'latitude' => 19.45234,
     'longitude' => 72.23234,
-    'date'=> "4-10-2019"   // date in mm-dd-yyyy format; This is required to return the Timezone of that date
+    'date'=> "4-26-2018"   // date in mm-dd-yyyy format; This is required to return the Timezone of that date
 );
 
 
