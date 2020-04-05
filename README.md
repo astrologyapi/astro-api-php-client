@@ -1,7 +1,7 @@
-Vedic-Rishi-Astro-API-PHP-Client
+AstrologyAPI-PHP-Client
 ================================
 
-This is PHP client to consume Vedic Rishi Astro APIs
+This is PHP client to consume APIs from AstrologyAPI.com
 
 Where to get API Key
 ====================
@@ -86,5 +86,5 @@ How to Use
                         'timezone' => 5.5
                     );
     ```
-Run matching.php file to test functions related to Vedic Rishi Match Making APIs.
+Run matching.php file to test functions related to AstrologyAPI Match Making APIs.
 For API documentation, visit - https://www.astrologyapi.com/docs/
