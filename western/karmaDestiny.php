@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/WesternApiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 $userId = "<your-user-id>";
 $apiKey = "<your-api-key>";
@@ -48,9 +48,9 @@ $settings = array(
 );
 
 
-//Initializing the WesternApiClient
+//Initializing the AstrologyApiClient
 
-$astrologyApi = new WesternApiClient($userId, $apiKey);
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
 
 

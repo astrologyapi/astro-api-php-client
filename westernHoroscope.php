@@ -1,12 +1,12 @@
 <?php
 /**
- * A php file to test the Vedic Rishi Client class
+ * A php file to test the Astrology Api Client class
  * Author: Chandan Tiwari
  * Date: 06/12/14
  * Time: 5:42 PM
  */
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 $userId = "<your-user-id>";
 $apiKey = "<your-api-key>";
@@ -45,15 +45,15 @@ $settings = array(
 
 
 
-// instantiate VedicRishiClient class
-$vedicRishi = new VedicRishiClient($userId, $apiKey);
+// instantiate AstrologyApiClient class
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
 //Get Western Horoscope with default setting.
-$horoscopeData = $vedicRishi->getWesternHoroscope($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$horoscopeData = $astrologyApi->getWesternHoroscope($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Westen Horoscope with Setting.
-$horoscopeDataWithSetting = $vedicRishi->getWesternHoroscope($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone'],$settings);
+$horoscopeDataWithSetting = $astrologyApi->getWesternHoroscope($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone'],$settings);
 
 //Get Wheel Chart
-$wheelChart = $vedicRishi->getWheelChartTropical($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$wheelChart = $astrologyApi->getWheelChartTropical($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 

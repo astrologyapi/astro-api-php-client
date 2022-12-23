@@ -1,12 +1,12 @@
 <?php
 /**
- * A PHP File to test Matching APIs from Vedic Rishi Astro
+ * A PHP File to test Matching APIs from Astrology API
  * User: chandan
  * Date: 14/05/15
  * Time: 5:38 PM
  */
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 
 $userId = "<your-user-id>";
@@ -39,26 +39,26 @@ $femaleData = array(
 
 
 
-// instantiate VedicRishiClient class
-$vedicRishi = new VedicRishiClient($userId, $apiKey);
+// instantiate AstrologyApiClient class
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
 
-// call method of vedicrishiclient for matching apis
-$res = $vedicRishi->matchObstructions($data, $femaleData);
+// call method of astrologyapiclient for matching apis
+$res = $astrologyApi->matchObstructions($data, $femaleData);
 
-$res1 = $vedicRishi->matchAshtakootPoints($data, $femaleData);
+$res1 = $astrologyApi->matchAshtakootPoints($data, $femaleData);
 
-$res2 = $vedicRishi->matchBirthDetails($data, $femaleData);
+$res2 = $astrologyApi->matchBirthDetails($data, $femaleData);
 
-$res3 = $vedicRishi->matchPlanetDetails($data, $femaleData);
+$res3 = $astrologyApi->matchPlanetDetails($data, $femaleData);
 
-$res4 = $vedicRishi->matchAstroDetails($data, $femaleData);
+$res4 = $astrologyApi->matchAstroDetails($data, $femaleData);
 
-$res5 = $vedicRishi->getMatchMakingReport($data, $femaleData);
+$res5 = $astrologyApi->getMatchMakingReport($data, $femaleData);
 
-$res6 = $vedicRishi->getMatchSimpleReport($data, $femaleData);
+$res6 = $astrologyApi->getMatchSimpleReport($data, $femaleData);
 
-$res7 = $vedicRishi->getMatchManglikReport($data, $femaleData);
+$res7 = $astrologyApi->getMatchManglikReport($data, $femaleData);
 
 
 

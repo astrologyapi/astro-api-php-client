@@ -1,6 +1,6 @@
 <?php
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 
 $userId = "<your-user-id>";
@@ -13,16 +13,16 @@ $data = array(
 $signArray = ['aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces'];
 
 
-// instantiate VedicRishiClient class
-$vedicRishi = new VedicRishiClient($userId, $apiKey);
+// instantiate AstrologyApiClient class
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
 
 
-// call prediction method of the VedicRishiClient call .. provides JSON response
+// call prediction method of the AstrologyApiClient call .. provides JSON response
 
-$todaysPrediction = $vedicRishi->getTodaysPrediction($signArray[5], $data['timezone']);
-$tomorrowsPrediction = $vedicRishi->getTomorrowsPrediction($signArray[5], $data['timezone']);
-$yesterdaysPrediction = $vedicRishi->getYesterdaysPrediction($signArray[5], $data['timezone']);
+$todaysPrediction = $astrologyApi->getTodaysPrediction($signArray[5], $data['timezone']);
+$tomorrowsPrediction = $astrologyApi->getTomorrowsPrediction($signArray[5], $data['timezone']);
+$yesterdaysPrediction = $astrologyApi->getYesterdaysPrediction($signArray[5], $data['timezone']);
 
 
 // printing the JSON data on the screen/browser
