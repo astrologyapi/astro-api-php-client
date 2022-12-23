@@ -57,3 +57,5 @@ $horoscopeDataWithSetting = $astrologyApi->getWesternHoroscope($data['date'], $d
 //Get Wheel Chart
 $wheelChart = $astrologyApi->getWheelChartTropical($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
+echo $horoscopeData;
+echo "\n";
