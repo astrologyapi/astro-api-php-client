@@ -7,7 +7,7 @@
  */
 
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 $userId = "<your-user-id>";
 $apiKey = "<your-api-key>";
@@ -23,7 +23,7 @@ $data = array(
 );
 
 
-$client = new VedicRishiClient($userId, $apiKey);
+$client = new AstrologyApiClient($userId, $apiKey);
 $response =  $client->callApi("timezone_with_dst", $data);
 
 

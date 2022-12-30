@@ -1,13 +1,13 @@
 <?php
 /**
- * A PHP File to test Numerology APIs from Vedic Rishi Astro
+ * A PHP File to test Numerology APIs from Astrology API
  * User: chandan
  * Date: 14/05/15
  * Time: 5:38 PM
  */
 
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 
 $userId = "<your-user-id>";
@@ -22,17 +22,17 @@ $yearOfBirth = 1988;
 $name = 'Chandan';
 
 
-// instantiate VedicRishiClient class
-$vedicRishi = new VedicRishiClient($userId, $apiKey);
+// instantiate AstrologyApiClient class
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
-// call numerology method of the VedicRishiClient call .. provides JSON response
-$numeroJSONData1 = $vedicRishi->getNumeroReport($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData2 = $vedicRishi->getNumeroTable($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData3 = $vedicRishi->getNumeroPlaceVastu($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData4 = $vedicRishi->getNumeroFavLord($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData5 = $vedicRishi->getNumeroFavMantra($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData6 = $vedicRishi->getNumeroFastsReport($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
-$numeroJSONData7 = $vedicRishi->getNumeroFavTime($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+// call numerology method of the AstrologyApiClient call .. provides JSON response
+$numeroJSONData1 = $astrologyApi->getNumeroReport($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData2 = $astrologyApi->getNumeroTable($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData3 = $astrologyApi->getNumeroPlaceVastu($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData4 = $astrologyApi->getNumeroFavLord($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData5 = $astrologyApi->getNumeroFavMantra($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData6 = $astrologyApi->getNumeroFastsReport($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
+$numeroJSONData7 = $astrologyApi->getNumeroFavTime($dateOfBirth, $monthOfBirth, $yearOfBirth, $name);
 
 
 // printing the JSON data on the screen/browser

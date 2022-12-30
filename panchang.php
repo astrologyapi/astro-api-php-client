@@ -7,14 +7,14 @@
  */
 
 
-require_once 'src/VedicRishiClient.php';
+require_once 'src/AstrologyApiClient.php';
 
 
 $userId = "<your-user-id>";
 $apiKey = "<your-api-key>";
 
 
-// make some dummy data in order to call vedic rishi panchang api function
+// make some dummy data in order to call astrology panchang api function
 $data = array(
 
     'date' => 25,
@@ -29,32 +29,32 @@ $data = array(
 );
 
 
-// instantiate VedicRishiClient class
-$vedicRishi = new VedicRishiClient($userId, $apiKey);
+// instantiate AstrologyApiClient class
+$astrologyApi = new AstrologyApiClient($userId, $apiKey);
 
 //Get Basic Panchang
-$responseData = $vedicRishi->getBasicPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData = $astrologyApi->getBasicPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Basic Panchang at the time of sunrise
-$responseData1 = $vedicRishi->getBasicPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData1 = $astrologyApi->getBasicPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Advance Panchang
-$responseData2 = $vedicRishi->getAdvancedPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData2 = $astrologyApi->getAdvancedPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Advance Panchang at the time of sunrise
-$responseData3 = $vedicRishi->getAdvancedPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData3 = $astrologyApi->getAdvancedPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Planet Panchang
-$responseData4 = $vedicRishi->getPlanetPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData4 = $astrologyApi->getPlanetPanchang($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Planet Panchang at the time of sunrise
-$responseData5 = $vedicRishi->getPlanetPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData5 = $astrologyApi->getPlanetPanchangSunrise($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Chaughadiya Muhurta
-$responseData6 = $vedicRishi->getChaughadiyaMuhurta($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData6 = $astrologyApi->getChaughadiyaMuhurta($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 //Get Hora Muhurta
-$responseData7 = $vedicRishi->getHoraMuhurta($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
+$responseData7 = $astrologyApi->getHoraMuhurta($data['date'], $data['month'], $data['year'], $data['hour'], $data['minute'], $data['latitude'], $data['longitude'], $data['timezone']);
 
 
 

@@ -1,7 +1,7 @@
 <?php
 /**
- * Vedic Rishi Client for consuming Vedic Rishi Astro Web APIs
- * http://www.vedicrishiastro.com/astro-api/
+ * Astrology API Client for consuming Astrology APIs
+ * https://astrologyapi.com/
  * Author: Chandan Tiwari
  * Date: 06/12/14
  * Time: 5:42 PM
@@ -10,7 +10,7 @@
 require 'sdk.php';
 
 
-class WesternApiClient
+class AstrologyApiClient
 {
     private $userId = null;
     private $apiKey = null;
@@ -18,13 +18,13 @@ class WesternApiClient
     private $settings = array();
 
     //TODO: MUST enable this on production- MUST
-    //private $apiEndPoint = "https://api.vedicrishiastro.com/v1";
+    //private $apiEndPoint = "https://json.astrologyapi.com/v1/";
 
     //TODO: MUST- comment this and uncomment https url above on production for added security
 
     /**
-     * @param $uid string userId for Vedic Rishi Astro API
-     * @param $key string api key for Vedic Rishi Astro API access
+     * @param $uid string userId for Astrology API
+     * @param $key string api key for Astrology API access
      */
     public function __construct($uid, $key)
     {
