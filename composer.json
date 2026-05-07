@@ -1,5 +1,6 @@
 {
     "name": "astrologyapi/astrologyapi-php",
+    "version": "2.0.0",
     "description": "Official PHP SDK for AstrologyAPI.com — Vedic, Western, KP, Lal Kitab, Numerology, and more.",
     "type": "library",
     "license": "MIT",
